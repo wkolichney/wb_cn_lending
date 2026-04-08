@@ -1,0 +1,2 @@
+sql_insert_scripts/all_documents_raw.json filter=lfs diff=lfs merge=lfs -text
+sql_insert_scripts/docs_df.parquet filter=lfs diff=lfs merge=lfs -text
