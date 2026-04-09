@@ -5,7 +5,7 @@ import wbgapi as wb
 import time
 
 
-def get_project(url, rows, os=0, retries=3):
+def get_project(url, rows, os=0, retries=5):
     url = 'https://search.worldbank.org/api/v3/projects'
     url = f"{url}?format=json&rows={rows}&os={os}"
     for attempt in range(retries):
@@ -14,11 +14,11 @@ def get_project(url, rows, os=0, retries=3):
             return response.json()
         else:
             print(f'Error {response.status_code} at os={os}, attempt {attempt+1}/{retries}')
-            time.sleep(5)  # wait before retrying
+            time.sleep(15)  # wait before retrying
     return None
 
 
-def get_document(project_id, retries=3):
+def get_document(project_id, retries=5):
     documents_url = 'https://search.worldbank.org/api/v3/wds'
     url = f"{documents_url}?format=json&rows=50&projectid={project_id}"
     for attempt in range(retries):
@@ -31,7 +31,7 @@ def get_document(project_id, retries=3):
                 print(f"Warning: {project_id} has {total} docs, only fetched 50")
             return data
         else:
-            wait = 2 ** attempt
+            wait = 5 ** attempt
             print(f'Error {response.status_code} for {project_id}, attempt {attempt+1}/{retries}, waiting {wait}s')
             time.sleep(wait)
     return None

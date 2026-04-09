@@ -6,8 +6,6 @@ PROJECT_COLUMNS = [
     'id',
     'project_name',
     'countryshortname',
-    'borrower',
-    'impagency',
     'curr_ibrd_commitment',
     'idacommamt',
     'totalamt',
