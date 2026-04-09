@@ -18,6 +18,13 @@ PROJECT_COLUMNS = [
     'envassesmentcategorycode'
 ]
 
+COUNTRY_COLUMNS = [
+    'countryshortname',
+    'regionname'
+]
+
+
+
 MAJOR_SECTOR_COLUMNS = [
     'project_id',
     "major_sector_code",
