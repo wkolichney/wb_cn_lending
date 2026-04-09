@@ -84,14 +84,14 @@ CREATE TABLE IF NOT EXISTS project_sectors (
 -- one to many relationship for implementing agencies and borrowers --
 CREATE TABLE IF NOT EXISTS impagency (
     impagency_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    impagency_name VARCHAR(255),
+    impagency_name TEXT,
     project_id VARCHAR(255),
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
 
 CREATE TABLE IF NOT EXISTS borrower (
     borrower_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    borrower_name VARCHAR(255),
+    borrower_name TEXT,
     project_id VARCHAR(255),
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
