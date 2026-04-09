@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS major_sector_lookup (
 -- LOOKUP TABLE SECTOR --
 CREATE TABLE IF NOT EXISTS proj_sector_lookup (
     sector_code CHAR(3) PRIMARY KEY NOT NULL,
-    sector_name VARCHAR(255),
+    sector_name VARCHAR(255)
 );
 
 
@@ -70,11 +70,12 @@ CREATE TABLE IF NOT EXISTS project_major_sectors (
 CREATE TABLE IF NOT EXISTS project_sectors (
     project_sector_id INT PRIMARY KEY AUTO_INCREMENT,
     project_id VARCHAR(255) NOT NULL,     -- shortcut FK
+    project_major_sector_id INT NOT NULL, -- FK points UP to project_major_sectors
     sector_code CHAR(3) NOT NULL,         -- FK points to lookup
     sector_percent DECIMAL(5, 2),         -- never seen anything other than yet
     FOREIGN KEY (project_id) REFERENCES projects(project_id),
-    FOREIGN KEY (project_major_sector_id) REFERENCES project_major_sectors(id),
-    FOREIGN KEY (sector_code) REFERENCES sector_lookup(sector_code)
+    FOREIGN KEY (project_major_sector_id) REFERENCES project_major_sectors(project_major_sector_id),
+    FOREIGN KEY (sector_code) REFERENCES proj_sector_lookup(sector_code)
 );
 
 
@@ -84,14 +85,14 @@ CREATE TABLE IF NOT EXISTS project_sectors (
 CREATE TABLE IF NOT EXISTS impagency (
     impagency_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     impagency_name VARCHAR(255),
-    project_id INT,
+    project_id VARCHAR(255),
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
 
 CREATE TABLE IF NOT EXISTS borrower (
     borrower_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     borrower_name VARCHAR(255),
-    project_id INT,
+    project_id VARCHAR(255),
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
 
@@ -118,7 +119,7 @@ CREATE TABLE IF NOT EXISTS documents (
     maj_document_type VARCHAR(255), -- "majdocty" in API; major document type, more umbrella category than document_type
     disclstat VARCHAR(255), -- disclosure status
     versiontype VARCHAR(255), -- unsure meaning
-    --prdln_exact VARCHAR(255) -- I dont think i need because ive never seen a difference with this and prdln, but could be wrong
+    -- prdln_exact VARCHAR(255) -- I dont think i need because ive never seen a difference with this and prdln, but could be wrong
 
     -- CITATION LIKE --
     author VARCHAR(255), -- in API, they give room for this to be a one-to-many relationship, but never seen more than one author
@@ -131,10 +132,10 @@ CREATE TABLE IF NOT EXISTS documents (
     guid VARCHAR(255), -- Alternate document ID
     owner VARCHAR(255), -- Owning unit in the Bank
 
-    --available_in VARCHAR(255) - seems useless cuz of lang
+    -- available_in VARCHAR(255) - seems useless cuz of lang
     -- FOREIGN KEYS --
-    project_id INT,
-    FOREIGN KEY (project_id) REFERENCES projects(project_id),
+    project_id VARCHAR(255),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
 );
 
 -- DOCUMENT COUNTRY CHILD TABLE --
@@ -149,7 +150,7 @@ CREATE TABLE IF NOT EXISTS doc_country (
 
 -- A document can have multiple themes, a many-to-many relationship, so we need a join table. The theme name is stored here for simplicity, but could be normalized into a separate lookup table if desired.
 CREATE TABLE IF NOT EXISTS doc_theme ( -- BEWARE, sometimes there's 'theme' and 'majtheme'. NO CLUE WHY
-    doc_theme_id INT PRIMARY KEY NOT NULL, -- surrogate key for the many-to-many relationship
+    doc_theme_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, -- surrogate key for the many-to-many relationship
     theme_name VARCHAR(255),
     document_id INT,
     FOREIGN KEY (document_id) REFERENCES documents(document_id),
@@ -159,7 +160,7 @@ CREATE TABLE IF NOT EXISTS doc_theme ( -- BEWARE, sometimes there's 'theme' and 
 
 -- A document can have sectors, a many-to-many relationship, so we need a join table. The theme name is stored here for simplicity, but could be normalized into a separate lookup table if desired.
 CREATE TABLE IF NOT EXISTS doc_sector (
-    doc_sector_id INT PRIMARY KEY NOT NULL, -- surrogate key for the many-to-many relationship
+    doc_sector_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, -- surrogate key for the many-to-many relationship
     sector_name VARCHAR(255),
     document_id INT,
     FOREIGN KEY (document_id) REFERENCES documents(document_id),
@@ -169,7 +170,7 @@ CREATE TABLE IF NOT EXISTS doc_sector (
 
 -- A document can have subsectors, a many-to-many relationship, so we need a join table. The theme name is stored here for simplicity, but could be normalized into a separate lookup table if desired.
 CREATE TABLE IF NOT EXISTS doc_sub_sector (
-    doc_sub_sector_id INT PRIMARY KEY NOT NULL, -- surrogate key for the many-to-many relationship
+    doc_sub_sector_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT, -- surrogate key for the many-to-many relationship
     sub_sector_name VARCHAR(255),
     document_id INT,
     FOREIGN KEY (document_id) REFERENCES documents(document_id),

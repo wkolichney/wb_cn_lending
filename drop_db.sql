@@ -1,0 +1,1 @@
+DROP DATABASE IF EXISTS wb_proj_doc;

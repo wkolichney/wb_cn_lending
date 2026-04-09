@@ -1,1 +1,2 @@
-DROP DATABASE wb_proj_doc;
+USE wb_proj_doc;
+SHOW TABLES;
