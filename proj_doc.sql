@@ -1,6 +1,14 @@
 CREATE DATABASE IF NOT EXISTS wb_proj_doc;
 USE wb_proj_doc;
 
+
+-- Lookup table for country and region information
+CREATE TABLE IF NOT EXISTS country (
+    countryshortname VARCHAR(255) PRIMARY KEY NOT NULL,
+    regionname VARCHAR(255)
+);
+
+
 -- MAIN PROJECT TABLE --
 CREATE TABLE IF NOT EXISTS projects (
     project_id VARCHAR(255) PRIMARY KEY NOT NULL,
@@ -16,6 +24,38 @@ CREATE TABLE IF NOT EXISTS projects (
     envassesmentcategorycode CHAR(1)
 );
 
+-- LOOKUP TABLE FOR MAJOR SECTORS --
+CREATE TABLE IF NOT EXISTS major_sector_lookup (
+    major_sector_code CHAR(3) PRIMARY KEY NOT NULL,
+    major_sector_name VARCHAR(255)
+);
+
+-- LOOKUP TABLE SECTOR --
+CREATE TABLE IF NOT EXISTS proj_sector_lookup (
+    sector_code CHAR(3) PRIMARY KEY NOT NULL,
+    sector_name VARCHAR(255),
+);
+
+
+-- lookup table for themes, which are used in the doc_theme table
+CREATE TABLE IF NOT EXISTS doc_theme_lookup (
+    theme_name VARCHAR(255) PRIMARY KEY NOT NULL
+);
+
+
+-- lookup table for sectors, which are used in the doc_sector table
+CREATE TABLE IF NOT EXISTS doc_sector_lookup (
+    sector_name VARCHAR(255) PRIMARY KEY NOT NULL
+);
+
+
+
+-- lookup table for sectors, which are used in the doc_sector table
+CREATE TABLE IF NOT EXISTS doc_sub_sector_lookup (
+    sub_sector_name VARCHAR(255) PRIMARY KEY NOT NULL
+);
+
+
 -- CHILD TABLE PROJECT - MAJOR SECTOR --
 CREATE TABLE IF NOT EXISTS project_major_sectors (
     project_major_sector_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -25,11 +65,6 @@ CREATE TABLE IF NOT EXISTS project_major_sectors (
     FOREIGN KEY (major_sector_code) REFERENCES major_sector_lookup(major_sector_code)
 );
 
--- LOOKUP TABLE FOR MAJOR SECTORS --
-CREATE TABLE IF NOT EXISTS major_sector_lookup (
-    major_sector_code CHAR(3) PRIMARY KEY NOT NULL,
-    major_sector_name VARCHAR(255)
-);
 
 -- CHILD TABLE PROJECT - SECTOR --
 CREATE TABLE IF NOT EXISTS project_sectors (
@@ -42,18 +77,7 @@ CREATE TABLE IF NOT EXISTS project_sectors (
     FOREIGN KEY (sector_code) REFERENCES sector_lookup(sector_code)
 );
 
--- LOOKUP TABLE SECTOR --
-CREATE TABLE IF NOT EXISTS proj_sector_lookup (
-    sector_code CHAR(3) PRIMARY KEY NOT NULL,
-    sector_name VARCHAR(255),
-);
 
-
--- Lookup table for country and region information
-CREATE TABLE IF NOT EXISTS country (
-    countryshortname VARCHAR(255) PRIMARY KEY NOT NULL,
-    regionname VARCHAR(255)
-);
 
 
 -- one to many relationship for implementing agencies and borrowers --
@@ -132,10 +156,6 @@ CREATE TABLE IF NOT EXISTS doc_theme ( -- BEWARE, sometimes there's 'theme' and 
     FOREIGN KEY (theme_name) REFERENCES doc_theme_lookup(theme_name)
 );
 
--- lookup table for themes, which are used in the doc_theme table
-CREATE TABLE IF NOT EXISTS doc_theme_lookup (
-    theme_name VARCHAR(255) PRIMARY KEY NOT NULL
-);
 
 -- A document can have sectors, a many-to-many relationship, so we need a join table. The theme name is stored here for simplicity, but could be normalized into a separate lookup table if desired.
 CREATE TABLE IF NOT EXISTS doc_sector (
@@ -146,10 +166,6 @@ CREATE TABLE IF NOT EXISTS doc_sector (
     FOREIGN KEY (sector_name) REFERENCES doc_sector_lookup(sector_name)
 );
 
--- lookup table for sectors, which are used in the doc_sector table
-CREATE TABLE IF NOT EXISTS doc_sector_lookup (
-    sector_name VARCHAR(255) PRIMARY KEY NOT NULL
-);
 
 -- A document can have subsectors, a many-to-many relationship, so we need a join table. The theme name is stored here for simplicity, but could be normalized into a separate lookup table if desired.
 CREATE TABLE IF NOT EXISTS doc_sub_sector (
@@ -158,10 +174,5 @@ CREATE TABLE IF NOT EXISTS doc_sub_sector (
     document_id INT,
     FOREIGN KEY (document_id) REFERENCES documents(document_id),
     FOREIGN KEY (sub_sector_name) REFERENCES doc_sub_sector_lookup(sub_sector_name)
-);
-
--- lookup table for sectors, which are used in the doc_sector table
-CREATE TABLE IF NOT EXISTS doc_sub_sector_lookup (
-    sub_sector_name VARCHAR(255) PRIMARY KEY NOT NULL
 );
 
