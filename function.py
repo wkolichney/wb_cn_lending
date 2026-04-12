@@ -78,11 +78,3 @@ def parse_sector_data(project_id, sector_list):
     
     return major_sectors, sectors
 
-###########################################################################################
-#Im a big boy now, I dont need AI
-
-def my_code_document():
-    pass
-
-
-#https://search.worldbank.org/api/v3/wds?format=json&projectid=P165557

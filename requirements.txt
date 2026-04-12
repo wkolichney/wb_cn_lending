@@ -1,0 +1,5 @@
+sqlalchemy
+pymysql
+pandas
+requests
+wbgapi

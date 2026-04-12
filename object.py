@@ -36,3 +36,30 @@ SECTOR_COLUMNS = [
     'sector_percent'
 ]
 
+DOCUMENT_COLUMNS = [
+    'id',               # document_id
+    'docna',            # document_name (nested)
+    'docty',            # document_type
+    'prdln',            # prdln
+    'lndinstr',         # lndinstr (nested)
+    'docdt',            # docdt
+    'datestored',       # datestored
+    'disclosure_date',  # disclosure_date
+    'last_modified_date', # last_modified_date
+    'pdfurl',           # pdfurl
+    'txturl',           # txturl
+    'url',              # url
+    'majdocty',         # maj_document_type
+    'disclstat',        # disclstat
+    'versiontyp',       # versiontype
+    'authors',          # author (nested)
+    'seccl',            # security_class
+    'lang',             # lang
+    'repnb',            # repnb
+    'volnb',            # volnb
+    'display_title',    # display_title
+    'chronical_docm_id', # chronical_docm_id
+    'guid',             # guid
+    'owner',            # owner
+    'projectid',        # project_id (FK)
+]
