@@ -2,6 +2,7 @@ import pandas as pd
 import json
 from sqlalchemy import create_engine
 import sys
+import re
 sys.path.append('..')
 
 engine = create_engine('mysql+pymysql://root:root@localhost/wb_proj_doc')
@@ -90,14 +91,14 @@ for doc_key, doc in all_documents.items():
 
     theme = doc.get('theme', '')
     if theme:
-        for t in theme.split(','):
+        for t in re.split(r',(?! )', theme):
             t = t.strip()
             if t:
                 doc_theme_rows.append({'document_id': doc_id, 'theme_name': t})
 
     subsc = doc.get('subsc', '')
     if subsc:
-        for s in subsc.split(','):
+        for s in re.split(r',(?! )', subsc):
             s = s.strip()
             if s:
                 doc_sub_sector_rows.append({'document_id': doc_id, 'sub_sector_name': s})

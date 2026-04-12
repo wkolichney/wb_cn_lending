@@ -15,8 +15,9 @@ WHERE regionname = 'Other';
 SELECT * FROM country
 WHERE regionname = 'Other'; -- should only show up if countryshortname is also 'Other'
 
-ALTER TABLE doc_theme_lookup MODIFY theme_name TEXT;
-ALTER TABLE doc_theme MODIFY theme_name TEXT;
+ALTER TABLE doc_theme_lookup MODIFY theme_name VARCHAR(500);
+ALTER TABLE doc_theme MODIFY theme_name VARCHAR(500);
+
 ALTER TABLE doc_sub_sector_lookup MODIFY sub_sector_name TEXT;
 ALTER TABLE doc_sub_sector MODIFY sub_sector_name TEXT;
 

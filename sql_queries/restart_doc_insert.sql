@@ -10,3 +10,5 @@ TRUNCATE TABLE doc_theme_lookup;
 TRUNCATE TABLE doc_sub_sector_lookup;
 TRUNCATE TABLE documents;
 SET FOREIGN_KEY_CHECKS = 1;
+
+SELECT * FROM documents;
