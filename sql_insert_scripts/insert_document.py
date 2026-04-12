@@ -122,6 +122,7 @@ docs_df = pd.DataFrame(rows)
 docs_df.to_parquet('docs_df.parquet', index=False)
 
 
+
 # ── clean dates ───────────────────────────────────────
 for datecol in ['docdt', 'datestored', 'disclosure_date', 'last_modified_date']:
     docs_df[datecol] = pd.to_datetime(docs_df[datecol], errors='coerce').dt.date
@@ -144,6 +145,8 @@ print(f"Inserted {len(docs_df)} documents")
 doc_sector_rows = []
 doc_theme_rows = []
 doc_sub_sector_rows = []
+doc_country_rows = []
+
 
 for doc_key, doc in all_documents.items():
     doc_id = doc.get('id')
@@ -170,6 +173,8 @@ for doc_key, doc in all_documents.items():
             s = s.strip()
             if s:
                 doc_sub_sector_rows.append({'document_id': doc_id, 'sub_sector_name': s})
+
+
 
 # ── filter child rows to only inserted documents ──────
 inserted_doc_ids = set(docs_df['document_id'].astype(str))
@@ -210,3 +215,24 @@ doc_sub_sector_df = pd.DataFrame(doc_sub_sector_rows_filtered)
 doc_sub_sector_df['sub_sector_name'] = doc_sub_sector_df['sub_sector_name'].str.strip().str.lower()
 doc_sub_sector_df.to_sql('doc_sub_sector', con=engine, if_exists='append', index=False)
 print(f"Inserted {len(doc_sub_sector_df)} doc_sub_sector rows")
+
+#  ── insert doc_country ─────────────────────────────
+for doc_key, doc in all_documents.items():
+    doc_id = doc.get('id')
+    if not doc_id or doc_id not in inserted_doc_ids:
+        continue
+    
+    count = doc.get('count', '')
+    if count:
+        for c in re.split(r',(?! )', str(count)):
+            c = c.strip()
+            if c:
+                doc_country_rows.append({'document_id': doc_id, 'countryshortname': c})
+
+# filter to only countries that exist in country table
+valid_countries = set(pd.read_sql('SELECT countryshortname FROM country', con=engine)['countryshortname'])
+
+doc_country_df = pd.DataFrame(doc_country_rows)
+doc_country_df = doc_country_df[doc_country_df['countryshortname'].isin(valid_countries)]
+doc_country_df.to_sql('doc_country', con=engine, if_exists='append', index=False)
+print(f"Inserted {len(doc_country_df)} doc_country rows")
