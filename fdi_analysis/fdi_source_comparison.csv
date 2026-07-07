@@ -1,0 +1,5 @@
+source,countries,country_years,with_value,yr_min,yr_max
+A. BU greenfield (deals),63,537,361,2000,2025
+B. UNCTAD FdiFlowsStock,0,0,0,2000,2024
+C. CDIS outward CN->X,241,1446,1446,2018,2023
+D. CDIS mirror X<-CN,114,1406,1406,2009,2023

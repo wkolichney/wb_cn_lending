@@ -177,3 +177,23 @@ CREATE TABLE IF NOT EXISTS doc_sub_sector (
     FOREIGN KEY (sub_sector_name) REFERENCES doc_sub_sector_lookup(sub_sector_name)
 );
 
+-- Create another major sector look up to best align with WB dashboard --
+
+CREATE TABLE IF NOT EXISTS wb_condensed_sector (
+	wb_condensed_sector_name VARCHAR(255) NOT NULL PRIMARY KEY,
+    infrastructure BOOL
+);
+
+-- add the column to later to foreign key --
+ALTER TABLE major_sector_lookup 
+ADD COLUMN wb_condensed_sector_name VARCHAR(255);
+
+-- add contraint -- 
+ALTER TABLE major_sector_lookup
+ADD CONSTRAINT fk_wb_url_sector
+FOREIGN KEY (wb_condensed_sector_name) 
+REFERENCES wb_condensed_sector(wb_condensed_sector_name);
+
+
+
+

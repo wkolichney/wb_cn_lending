@@ -1,0 +1,5 @@
+source,direction,file,rows,partner_economies,country_year_cells,year_min,year_max
+DBnomics,outward (CN->X),cdis_dbnomics_cn_outward.csv,1545,258,1545,2018,2023
+DBnomics,mirror (X<-CN),cdis_dbnomics_mirror_inward_from_cn.csv,1574,127,1574,2009,2023
+Data360,outward (CN->X),cdis_data360_cn_outward.csv,1545,201,1206,2018,2023
+Data360,mirror (X<-CN),cdis_data360_mirror_inward_from_cn.csv,1423,116,1423,2009,2023

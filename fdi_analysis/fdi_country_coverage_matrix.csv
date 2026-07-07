@@ -1,0 +1,64 @@
+iso2,country,BU_years,BU_yr_range,CDISout_years,CDISmir_years,in_CDISmir
+AF,Afghanistan,3,2008.0-2023.0,6,0,False
+DZ,Algeria,10,2003.0-2025.0,6,6,True
+AO,Angola,8,2000.0-2024.0,6,0,False
+BD,Bangladesh,10,2008.0-2025.0,6,15,True
+BJ,Benin,1,2011.0-2011.0,6,12,True
+BW,Botswana,2,2008.0-2009.0,6,13,True
+CV,Cabo Verde,1,2015.0-2015.0,6,0,False
+KH,Cambodia,12,2008.0-2025.0,6,15,True
+CM,Cameroon,4,2007.0-2020.0,6,0,False
+CF,Central African Republic,1,2019.0-2019.0,6,0,False
+TD,Chad,3,2007.0-2019.0,6,0,False
+CG,Congo,5,2013.0-2024.0,6,0,False
+CD,"Congo, The Democratic Republic of the",9,2011.0-2023.0,6,0,False
+CI,Côte d'Ivoire,2,2017.0-2018.0,6,7,True
+DJ,Djibouti,5,2013.0-2023.0,6,0,False
+EG,Egypt,18,2005.0-2024.0,6,0,False
+ER,Eritrea,3,2012.0-2023.0,6,0,False
+ET,Ethiopia,14,2006.0-2021.0,6,0,False
+GA,Gabon,5,2010.0-2019.0,6,0,False
+GH,Ghana,10,2008.0-2021.0,6,15,True
+GN,Guinea,6,2010.0-2024.0,6,6,True
+IN,India,22,2003.0-2025.0,6,14,True
+ID,Indonesia,22,2004.0-2025.0,6,15,True
+JP,Japan,18,2004.0-2024.0,6,15,True
+KE,Kenya,17,2004.0-2024.0,6,0,False
+KP,"Korea, Democratic People's Republic of",2,2007.0-2013.0,6,0,False
+KR,"Korea, Republic of",13,2007.0-2024.0,6,15,True
+LA,Lao People's Democratic Republic,9,2009.0-2023.0,6,0,False
+LR,Liberia,4,2006.0-2018.0,6,0,False
+MG,Madagascar,5,2003.0-2015.0,6,5,True
+MW,Malawi,3,2018.0-2023.0,6,0,False
+MY,Malaysia,18,2003.0-2024.0,6,15,True
+ML,Mali,3,2013.0-2024.0,6,9,True
+MR,Mauritania,1,2019.0-2019.0,6,0,False
+MU,Mauritius,5,2008.0-2022.0,6,15,True
+MN,Mongolia,4,2000.0-2018.0,6,15,True
+MA,Morocco,7,2015.0-2024.0,6,10,True
+MZ,Mozambique,8,2010.0-2023.0,6,14,True
+MM,Myanmar,10,2008.0-2020.0,6,5,True
+NA,Namibia,5,2012.0-2024.0,0,0,False
+NP,Nepal,5,2010.0-2021.0,6,15,True
+NE,Niger,1,2008.0-2008.0,6,12,True
+NG,Nigeria,16,2003.0-2024.0,6,14,True
+PK,Pakistan,20,2003.0-2025.0,6,15,True
+PH,Philippines,16,2006.0-2023.0,6,15,True
+RW,Rwanda,6,2007.0-2023.0,6,13,True
+SN,Senegal,4,2006.0-2020.0,6,10,True
+SC,Seychelles,7,2008.0-2023.0,6,15,True
+SL,Sierra Leone,4,2012.0-2016.0,6,0,False
+SG,Singapore,18,2006.0-2024.0,6,15,True
+SO,Somalia,1,2020.0-2020.0,6,0,False
+ZA,South Africa,19,2006.0-2024.0,6,15,True
+SS,South Sudan,1,2015.0-2015.0,6,0,False
+LK,Sri Lanka,8,2010.0-2023.0,6,11,True
+SD,Sudan,2,2004.0-2009.0,6,0,False
+TW,"Taiwan, Province of China",14,2000.0-2024.0,6,0,False
+TZ,"Tanzania, United Republic of",6,2009.0-2024.0,6,11,True
+TH,Thailand,20,2001.0-2024.0,6,15,True
+TN,Tunisia,4,2004.0-2024.0,6,0,False
+UG,Uganda,11,2001.0-2023.0,6,15,True
+VN,Viet Nam,21,2004.0-2025.0,6,0,False
+ZM,Zambia,13,2006.0-2024.0,6,15,True
+ZW,Zimbabwe,12,2003.0-2024.0,6,0,False
