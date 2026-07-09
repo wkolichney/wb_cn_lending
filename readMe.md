@@ -158,22 +158,21 @@ Fill in the URL column with the canonical download/citation link for each source
 
 | Dataset | Loaded into | Access | Source / citation | URL |
 |---------|-------------|--------|-------------------|-----|
-| World Bank Projects & Operations | `projects`, `borrower`, `impagency`, sector tables | API | World Bank Projects API | _(add URL)_ |
-| World Bank Documents & Reports | `documents`, `doc_*` | API | World Bank D&R API | _(add URL)_ |
-| WB World Development Indicators | `wb_indicator_pull`, `wb_indicators` | API (`bblocks`) | World Bank WDI | _(add URL)_ |
-| WB Worldwide Governance Indicators | `wb_indicator_pull` | API (`wbgapi`) | World Bank WGI | _(add URL)_ |
-| OECD DAC2A ODA disbursements | `dac_oda` | API (SDMX) | OECD DAC2A | _(add URL)_ |
-| China steel production | `china_steel` | API | chinadata.live | _(add URL)_ |
-| IMF Coordinated Direct Investment Survey | `bilateral_fdi` | manual | IMF CDIS | _(add URL)_ |
-| IMF Int'l Merchandise Trade Statistics | `trade_china` | manual | IMF IMTS | _(add URL)_ |
-| IMF Debt Sustainability Analysis + ratings | `dsa_credit`, `credit_lookup` | manual | IMF DSA; S&P/Moody's/Fitch | _(add URL)_ |
-| Polity5 | `democracy` | manual | Center for Systemic Peace | _(add URL)_ |
-| V-Dem (Country-Year Core v16) | `corruption` | manual | V-Dem Institute | _(add URL)_ |
-| UCDP/PRIO Armed Conflict Dataset v26.1 | `ucdp_conflict` | manual | UCDP / PRIO | _(add URL)_ |
-| UN GA voting / ideal points | `un_cn_agree` | manual | Bailey/Strezhnev/Voeten (Dataverse doi:10.7910/DVN/LEJUQZ) | _(add URL)_ |
-| Diplomatic recognition (Taiwan) | `taiwan_recognition` | manual | ICPSR study 30802 | _(add URL)_ |
-| Ross–Mahdavi Oil & Gas 1932–2014 | `oil_gas` | manual | Ross & Mahdavi | _(add URL)_ |
-| GCI country reference (ISO-2/3) | `country.iso2` | manual | GDP Center / GCI | _(add URL)_ |
+| World Bank Projects & Operations | `projects`, `borrower`, `impagency`, sector tables | API | World Bank Projects API | _https://search.worldbank.org/api/v3/projects_ |
+| World Bank Documents & Reports | `documents`, `doc_*` | API | World Bank D&R API | _https://search.worldbank.org/api/v3/wds_ |
+| WB World Development Indicators | `wb_indicator_pull`, `wb_indicators` | API (`bblocks`) | World Bank WDI | _https://databank.worldbank.org/source/world-development-indicators_ |
+| WB Worldwide Governance Indicators | `wb_indicator_pull` | API (`wbgapi`) | World Bank WGI | _https://www.worldbank.org/en/publication/worldwide-governance-indicators_ |
+| OECD DAC2A ODA disbursements | `dac_oda` | API (SDMX) | OECD DAC2A | _https://data-explorer.oecd.org/vis?df[ds]=DisseminateFinalDMZ&df[id]=DSD_DAC2%40DF_DAC2A&df[ag]=OECD.DCD.FSD&dq=.ALLR.206.USD.Q&lom=LASTNPERIODS&lo=5&to[TIME_PERIOD]=false_ |
+| China steel production | `china_steel` | API | chinadata.live | _https://chinadata.live/api/v2/data/steel-production-china-vs-world_ |
+| IMF Coordinated Direct Investment Survey | `bilateral_fdi` | manual | IMF CDIS | _https://data360.worldbank.org/en/dataset/IMF_CDIS_ |
+| IMF Int'l Merchandise Trade Statistics | `trade_china` | manual | IMF IMTS | _https://data.imf.org/en/datasets/IMF.STA:IMTS_ |
+| IMF Debt Sustainability Analysis + ratings | `dsa_credit`, `credit_lookup` | manual | IMF DSA; S&P/Moody's/Fitch | _ask Tianyi_ |
+| Polity5 | `democracy` | manual | Center for Systemic Peace | _https://www.systemicpeace.org/polityproject.html_ |
+| V-Dem (Country-Year Core v16) | `corruption` | manual | V-Dem Institute | _https://www.v-dem.net/data/the-v-dem-dataset/_ |
+| UCDP/PRIO Armed Conflict Dataset v26.1 | `ucdp_conflict` | manual | UCDP / PRIO | _https://ucdp.uu.se/downloads/#armedconflict_ |
+| UN GA voting / ideal points | `un_cn_agree` | manual | Bailey/Strezhnev/Voeten (Dataverse doi:10.7910/DVN/LEJUQZ) | _https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/LEJUQZ_ |
+| Diplomatic recognition (Taiwan) | `taiwan_recognition` | manual | ICPSR study 30802 | _https://www.icpsr.umich.edu/web/ICPSR/studies/30802#_ |
+| Ross–Mahdavi Oil & Gas 1932–2014 | `oil_gas` | manual | Ross & Mahdavi | _https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/ZTPW0Y_ |
 
 See [`manual_file_location/README.md`](manual_file_location/README.md) for the exact file
 name, version, and consuming script of each **manual** source.
