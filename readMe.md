@@ -166,7 +166,7 @@ Fill in the URL column with the canonical download/citation link for each source
 | China steel production | `china_steel` | API | chinadata.live | _https://chinadata.live/api/v2/data/steel-production-china-vs-world_ |
 | IMF Coordinated Direct Investment Survey | `bilateral_fdi` | manual | IMF CDIS | _https://data360.worldbank.org/en/dataset/IMF_CDIS_ |
 | IMF Int'l Merchandise Trade Statistics | `trade_china` | manual | IMF IMTS | _https://data.imf.org/en/datasets/IMF.STA:IMTS_ |
-| IMF Debt Sustainability Analysis + ratings | `dsa_credit`, `credit_lookup` | manual | IMF DSA; S&P/Moody's/Fitch | _ask Tianyi_ |
+| IMF Debt Sustainability Analysis + ratings | `dsa_credit`, `credit_lookup` | manual | IMF DSA; S&P/Moody's/Fitch - Economist Intelligent Unit |
 | Polity5 | `democracy` | manual | Center for Systemic Peace | _https://www.systemicpeace.org/polityproject.html_ |
 | V-Dem (Country-Year Core v16) | `corruption` | manual | V-Dem Institute | _https://www.v-dem.net/data/the-v-dem-dataset/_ |
 | UCDP/PRIO Armed Conflict Dataset v26.1 | `ucdp_conflict` | manual | UCDP / PRIO | _https://ucdp.uu.se/downloads/#armedconflict_ |
