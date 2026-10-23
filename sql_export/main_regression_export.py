@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 engine = create_engine('mysql+pymysql://root:root@localhost/wb_proj_doc')
 
 # Write the export next to this script regardless of the working directory.
-OUTPUT_PATH = Path(__file__).resolve().parent / 'project_document_regression.xlsx'
+OUTPUT_PATH = Path(__file__).resolve().parent / 'project_document_regression4.xlsx'
 
 
 
@@ -318,7 +318,11 @@ wide_steel_df = wide_steel_df.reset_index(drop=True)
 
 # ── STEP 7: join global series and export ──────────────────────────────────
 larger_df = final_df.reset_index(drop=True)
-larger_df = larger_df.join(wide_steel_df).ffill()
+larger_df = larger_df.join(wide_steel_df)
+# wide_steel_df is a single row, so the join only fills row 0; forward-fill the
+# steel columns ONLY. A frame-wide ffill() would copy other projects' values into
+# every genuinely missing cell (amounts, sectors, documents, controls).
+larger_df[wide_steel_df.columns] = larger_df[wide_steel_df.columns].ffill()
 
 # Export
 larger_df.to_excel(OUTPUT_PATH, index=False)
