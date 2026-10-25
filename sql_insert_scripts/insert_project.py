@@ -130,13 +130,18 @@ for _, row in df.iterrows():
                 'sector_percent': sector.get('sector_percent')
             })
 
-pms_df = pd.DataFrame(pms_rows)
+# The API can list the same major sector twice for one project (once under its
+# legacy name, once under its "FY17 - " name), each entry carrying different
+# sub-sectors. Keep one row per (project, major sector) so the join below can't
+# attach each sub-sector to two parents and double its percentage.
+pms_df = pd.DataFrame(pms_rows).drop_duplicates(subset=['project_id', 'major_sector_code'])
 pms_df.to_sql('project_major_sectors', con=engine, if_exists='append', index=False)
 
 # now fetch back the auto-generated project_major_sector_ids so we can link project_sectors
 pms_db = pd.read_sql('SELECT project_major_sector_id, project_id, major_sector_code FROM project_major_sectors', con=engine)
 
-ps_df = pd.DataFrame(ps_rows)
-ps_df = ps_df.merge(pms_db, on=['project_id', 'major_sector_code'], how='left')
+# link each sub-sector once; validate fails loudly if a parent is ever duplicated again
+ps_df = pd.DataFrame(ps_rows).drop_duplicates(subset=['project_id', 'major_sector_code', 'sector_code'])
+ps_df = ps_df.merge(pms_db, on=['project_id', 'major_sector_code'], how='left', validate='many_to_one')
 ps_df = ps_df[['project_id', 'project_major_sector_id', 'sector_code', 'sector_percent']]
 ps_df.to_sql('project_sectors', con=engine, if_exists='append', index=False)

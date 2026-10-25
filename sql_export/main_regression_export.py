@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 engine = create_engine('mysql+pymysql://root:root@localhost/wb_proj_doc')
 
 # Write the export next to this script regardless of the working directory.
-OUTPUT_PATH = Path(__file__).resolve().parent / 'project_document_regression4.xlsx'
+OUTPUT_PATH = Path(__file__).resolve().parent / 'project_document_regression5.xlsx'
 
 
 
